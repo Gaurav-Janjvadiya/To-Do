@@ -121,6 +121,7 @@ main{
 #sort{
     display: flex;
     justify-content: end;
+    align-items: center;
     margin-top: 2rem;
     height: 3rem;
     margin-bottom: 1rem;
