@@ -25,7 +25,6 @@ function changeMode() {
         modebtn.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`
     }
 }
-
 function makeOneTask() {
 
     const addedTask = document.createElement("div");
@@ -92,9 +91,17 @@ function makeOneTask() {
             }
         })
 
-        
-
     }
+    gsap.fromTo(addedTask,{
+        y:-30,
+        opacity:0.5,
+
+    },{
+        y:0,
+        opacity:1,
+        ease:"bounce.out",
+    })
+    
 }
 function forTimeDate() {
 
@@ -110,14 +117,15 @@ function forTimeDate() {
     } else {
         minute += " PM";
     }
-    console.log(hour);
     document.querySelector("#writeTask").value += `\t\t\t\t\t\t\t\t\t${date}-${month}-${year} | ${hour}:${minute}`;
 }
 document.querySelector("#addDate").addEventListener("click", forTimeDate);
 
-document.querySelector("#addTask").addEventListener("click", makeOneTask)
+document.querySelector("#addTask").addEventListener("click",makeOneTask);
+
 
 document.querySelector("#searchbtn").addEventListener("click",() => {
     document.querySelector("#searchTask").focus();
 })
+
 
