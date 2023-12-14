@@ -92,9 +92,9 @@ header{
     height: max-content ;
 }
 
-#dotbtn{
+/* #dotbtn{
     display: none;
-}
+} */
 
 #searchbtn:hover,#dotsTask:hover,#modebtn:hover,#addTask:hover,#addDate:hover,#sortbtn:hover,.editbtn:hover,.deletebtn:hover,.checkbox:hover{
     border: solid 0.2px var(--text);
