@@ -119,10 +119,23 @@ function forTimeDate() {
     }
     document.querySelector("#writeTask").value += `\t\t\t\t\t\t\t\t\t${date}-${month}-${year} | ${hour}:${minute}`;
 }
+
 document.querySelector("#addDate").addEventListener("click", forTimeDate);
 
 document.querySelector("#addTask").addEventListener("click",makeOneTask);
 
+document.querySelector("#searchbtn").addEventListener("click",() => {
+        gsap.fromTo("#searchTask",{
+            display:'none',
+            width:"0%",
+            opacity:0
+        },{
+            display:'flex',
+            width:"30%",
+            duration:1,
+            opacity:1
+        })
+})
 
 document.querySelector("#searchbtn").addEventListener("click",() => {
     document.querySelector("#searchTask").focus();
