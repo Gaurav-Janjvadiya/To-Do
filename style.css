@@ -78,7 +78,7 @@ header{
     display: none;
 }
 
-#searchbtn,#modebtn,#dotsTask,#addTask,#addDate,#sortbtn,#dotbtn,.editbtn,.deletebtn,.checkbox{
+#searchbtn,#modebtn,#dotsTask,#addTask,#addDate,#sortbtn,.editbtn,.deletebtn,.checkbox{
     all: initial;
     margin: 2px;
     cursor: pointer;
@@ -92,12 +92,13 @@ header{
     height: max-content ;
 }
 
-/* #dotbtn{
-    display: none;
-} */
 
-#searchbtn:hover,#dotsTask:hover,#modebtn:hover,#addTask:hover,#addDate:hover,#sortbtn:hover,.editbtn:hover,.deletebtn:hover,.checkbox:hover{
+#searchbtn:hover,#dotsTask:hover,#modebtn:hover,#dotbtn:hover,#addTask:hover,#addDate:hover,#sortbtn:hover,.editbtn:hover,.deletebtn:hover,.checkbox:hover{
     border: solid 0.2px var(--text);
+}
+
+#dotsTask{
+    display: none;
 }
 
 main{
@@ -109,6 +110,8 @@ main{
 #addTaskbar{
     display: flex;
     height: 3rem;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 3rem;
 }
 
@@ -127,9 +130,9 @@ main{
     display: flex;
     justify-content: end;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
     height: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 #tasks{
@@ -184,11 +187,26 @@ main{
         width: 30%;
     }
 
-    #dotbtn{
+    #writeTask{
+        width: 70%;
+        height: 100%;
+        border-radius: 3rem;
+        padding: 0rem 1rem;
+        color: var(--text);
+    }
+
+    main{
+        margin-top: 5rem;
+    }
+    
+    .editbtn,.deletebtn,.checkbox{
+        display: none;
+    }
+
+    #dotsTask{
         display: flex;
     }
 
-    
 }
 
 

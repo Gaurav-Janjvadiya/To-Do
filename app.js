@@ -53,6 +53,11 @@ function makeOneTask() {
     checkbox.innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
     addedTask.append(checkbox);
 
+    const dotsTask = document.createElement("button");
+    dotsTask.setAttribute("id","dotsTask");
+    dotsTask.innerHTML = `<span class="material-symbols-outlined">more_vert</span>`;
+    addedTask.append(dotsTask);
+
     const tasks = document.querySelector("#tasks");
     tasks.append(addedTask);
 
@@ -88,7 +93,7 @@ function makeOneTask() {
             } else {
                 onOff = 1;
                 checkboxes[i].innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
-            }
+             }
         })
 
     }
@@ -107,17 +112,17 @@ function forTimeDate() {
 
     const now = new Date();
     let date = now.getDate();
-    let month = now.getMonth();
+    let month = now.getMonth()+1;
     let year = now.getFullYear();
     let hour = now.getHours();
     let minute = now.getMinutes();
     if (hour > 12) {
         hour -= 12;
-        minute += " AM";
-    } else {
         minute += " PM";
+    } else {
+        minute += " AM";
     }
-    document.querySelector("#writeTask").value += `\t\t\t\t\t\t\t\t\t${date}-${month}-${year} | ${hour}:${minute}`;
+    document.querySelector("#writeTask").value += `\t\t${date}-${month}-${year} | ${hour}:${minute}`;
 }
 
 document.querySelector("#addDate").addEventListener("click", forTimeDate);
