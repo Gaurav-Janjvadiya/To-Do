@@ -140,10 +140,9 @@ document.querySelector("#searchbtn").addEventListener("click",() => {
             duration:1,
             opacity:1
         })
+        document.querySelector("#searchTask").focus();
 })
 
-document.querySelector("#searchbtn").addEventListener("click",() => {
-    document.querySelector("#searchTask").focus();
-})
+
 
 
