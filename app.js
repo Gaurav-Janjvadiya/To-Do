@@ -25,6 +25,7 @@ function changeMode() {
         modebtn.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`
     }
 }
+
 function makeOneTask() {
 
     const addedTask = document.createElement("div");
@@ -54,9 +55,29 @@ function makeOneTask() {
     addedTask.append(checkbox);
 
     const dotsTask = document.createElement("button");
-    dotsTask.setAttribute("id","dotsTask");
+    dotsTask.setAttribute("id", "dotsTask");
     dotsTask.innerHTML = `<span class="material-symbols-outlined">more_vert</span>`;
     addedTask.append(dotsTask);
+
+    const btns = document.createElement("div");
+    btns.setAttribute("id",'btns');
+    btns.innerHTML = `<button id="editbtn">
+        <span class="material-symbols-outlined">
+            edit
+        </span>
+    </button>
+    <button id="deletebtn">
+        <span class="material-symbols-outlined">
+            delete
+        </span>
+    </button>
+    <button id="checkbox">
+        <span class="material-symbols-outlined">
+            check_box_outline_blank
+        </span>
+    </button>`;
+    addedTask.append(btns);
+
 
     const tasks = document.querySelector("#tasks");
     tasks.append(addedTask);
@@ -69,6 +90,8 @@ function makeOneTask() {
     let delets = document.querySelectorAll(".deletebtn");
     let addedTasks = document.querySelectorAll(".addedTask");
     let checkboxes = document.querySelectorAll(".checkbox");
+    let dotsTasks = document.querySelectorAll("#dotsTask");
+    let allbtns = document.querySelectorAll("#btns");
 
     for (let i = 0; i < editbtns.length; i++) {
 
@@ -93,26 +116,37 @@ function makeOneTask() {
             } else {
                 onOff = 1;
                 checkboxes[i].innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
-             }
+            }
         })
 
-    }
-    gsap.fromTo(addedTask,{
-        y:-30,
-        opacity:0.5,
+        dotsTasks[i].addEventListener("click",()=>{
+           if( allbtns[i].style.display == "none"){
+                allbtns[i].style.display = "flex"
+           }else{
+            allbtns[i].style.display = "none";
+           }
+        })
 
-    },{
-        y:0,
-        opacity:1,
-        ease:"bounce.out",
+        
+
+    }
+    gsap.fromTo(addedTask, {
+        y: -30,
+        opacity: 0.5,
+
+    }, {
+        y: 0,
+        opacity: 1,
+        ease: "bounce.out",
     })
-    
+
 }
+
 function forTimeDate() {
 
     const now = new Date();
     let date = now.getDate();
-    let month = now.getMonth()+1;
+    let month = now.getMonth() + 1;
     let year = now.getFullYear();
     let hour = now.getHours();
     let minute = now.getMinutes();
@@ -127,20 +161,20 @@ function forTimeDate() {
 
 document.querySelector("#addDate").addEventListener("click", forTimeDate);
 
-document.querySelector("#addTask").addEventListener("click",makeOneTask);
+document.querySelector("#addTask").addEventListener("click", makeOneTask);
 
-document.querySelector("#searchbtn").addEventListener("click",() => {
-        gsap.fromTo("#searchTask",{
-            display:'none',
-            width:"0%",
-            opacity:0
-        },{
-            display:'flex',
-            width:"30%",
-            duration:1,
-            opacity:1
-        })
-        document.querySelector("#searchTask").focus();
+document.querySelector("#searchbtn").addEventListener("click", () => {
+    gsap.fromTo("#searchTask", {
+        display: 'none',
+        width: "0%",
+        opacity: 0
+    }, {
+        display: 'flex',
+        width: "30%",
+        duration: 1,
+        opacity: 1
+    })
+    document.querySelector("#searchTask").focus();
 })
 
 
