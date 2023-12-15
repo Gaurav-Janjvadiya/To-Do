@@ -25,10 +25,12 @@ function changeMode() {
         modebtn.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`
     }
 }
-
+let filteredArray;
+let addedTask = [];
+let forSearchResult;
 function makeOneTask() {
 
-    const addedTask = document.createElement("div");
+    addedTask = document.createElement("div");
     addedTask.setAttribute("class", "addedTask");
 
     const input = document.createElement("input");
@@ -86,14 +88,36 @@ function makeOneTask() {
     document.querySelector("#writeTask").focus();
 
     let editbtns = document.querySelectorAll(".editbtn");
+    let ideditbtns = document.querySelectorAll("#editbtn");
     let inputs = document.querySelectorAll(".editTask");
     let delets = document.querySelectorAll(".deletebtn");
+    let iddelets = document.querySelectorAll("#deletebtn");
     let addedTasks = document.querySelectorAll(".addedTask");
+    let idcheckboxes = document.querySelectorAll("#checkbox");
     let checkboxes = document.querySelectorAll(".checkbox");
     let dotsTasks = document.querySelectorAll("#dotsTask");
     let allbtns = document.querySelectorAll("#btns");
 
     for (let i = 0; i < editbtns.length; i++) {
+
+        ideditbtns[i].addEventListener("click",() => {
+            inputs[i].readOnly = false;
+            inputs[i].focus();
+        })
+
+        iddelets[i].addEventListener("click",() => {
+            addedTasks[i].remove();
+        })
+        let forIdCheckbox = 1;
+        idcheckboxes[i].addEventListener("click", () => {
+            if (forIdCheckbox == 1) {
+                idcheckboxes[i].innerHTML = `<span class="material-symbols-outlined">check_box</span>`;
+                forIdCheckbox = 0;
+            } else {
+                forIdCheckbox = 1;
+                idcheckboxes[i].innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
+            }
+        })
 
         editbtns[i].addEventListener("click", () => {
             inputs[i].readOnly = false;
@@ -118,18 +142,29 @@ function makeOneTask() {
                 checkboxes[i].innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
             }
         })
-
-        dotsTasks[i].addEventListener("click",()=>{
-           if( allbtns[i].style.display == "none"){
-                allbtns[i].style.display = "flex"
-           }else{
-            allbtns[i].style.display = "none";
-           }
-        })
-
-        
-
+        let on = 1;
+            dotsTasks[i].addEventListener("click",()=>{
+                if(on == 1){
+                     on = 0;
+                     allbtns[i].style.display = "flex"
+                }else{
+                 on = 1;
+                 allbtns[i].style.display = "none";
+                }
+                gsap.fromTo(allbtns[i],{
+                 opacity:0,
+                 duration:0.5,
+                 width:"0"
+                },{
+                 opacity:1,
+                 duration:0.5,
+                 width:"10.5rem"
+                })
+             })
     }
+
+    forSearchResult();
+    console.log(filteredArray)
     gsap.fromTo(addedTask, {
         y: -30,
         opacity: 0.5,
@@ -140,7 +175,10 @@ function makeOneTask() {
         ease: "bounce.out",
     })
 
+
+
 }
+
 
 function forTimeDate() {
 
@@ -163,6 +201,8 @@ document.querySelector("#addDate").addEventListener("click", forTimeDate);
 
 document.querySelector("#addTask").addEventListener("click", makeOneTask);
 
+
+
 document.querySelector("#searchbtn").addEventListener("click", () => {
     gsap.fromTo("#searchTask", {
         display: 'none',
@@ -176,7 +216,3 @@ document.querySelector("#searchbtn").addEventListener("click", () => {
     })
     document.querySelector("#searchTask").focus();
 })
-
-
-
-
