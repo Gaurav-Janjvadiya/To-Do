@@ -29,7 +29,8 @@ function changeMode() {
 let filteredArray;
 let addedTask = [];
 let hii;
-
+let checkboxes;
+let addedTasks;
 
 function makeOneTask() {
 
@@ -95,9 +96,9 @@ function makeOneTask() {
     let inputs = document.querySelectorAll(".editTask");
     let delets = document.querySelectorAll(".deletebtn");
     let iddelets = document.querySelectorAll("#deletebtn");
-    let addedTasks = document.querySelectorAll(".addedTask");
+    addedTasks = document.querySelectorAll(".addedTask");
     let idcheckboxes = document.querySelectorAll("#checkbox");
-    let checkboxes = document.querySelectorAll(".checkbox");
+    checkboxes = document.querySelectorAll(".checkbox");
     let dotsTasks = document.querySelectorAll("#dotsTask");
     let allbtns = document.querySelectorAll("#btns");
 
@@ -175,14 +176,14 @@ function makeOneTask() {
         opacity: 1,
         ease: "bounce.out",
     })
-    hii = Array.from(inputs);
-    hii = hii.filter(
-        function(arr){
-            if(arr.value === "Ga"){
-                return arr;
-            }
-        }
-    );
+    // hii = Array.from(inputs);
+    // hii = hii.filter(
+    //     function(arr){
+    //         if(arr.value === "Ga"){
+    //             return arr;
+    //         }
+    //     }
+    // );
 }
 
 
@@ -230,10 +231,12 @@ document.querySelector("#sortbtn").addEventListener("click",() => {
     })
     gsap.fromTo("#sortbtn",{
         x:-400,
-        duration:1
+        duration:1,
+        rotate:360,
     },{
         x:0,
-        duration:2
+        duration:2,
+        rotate:0,
     })
 })
 
@@ -251,3 +254,24 @@ document.querySelector("#searchbtn").addEventListener("click", () => {
     document.querySelector("#searchTask").focus();
 })
 
+const sortOptions = document.querySelector("#sortOptions");
+const checked = document.querySelector("#checked");
+const nonChecked = document.querySelector("#nonChecked");
+const all = document.querySelector("#All");
+let arr;
+
+sortOptions.addEventListener("click",(e) => {
+    if(e.target === checked){
+        arr = Array.from(addedTasks).filter((e) => {
+            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
+                return e;
+            }
+        })
+        arr.forEach((e) => {
+            tasks.prepend(e);
+        })
+    }
+    // if(e.target === nonChecked){
+
+    // }
+})
