@@ -27,7 +27,6 @@ function changeMode() {
 }
 let filteredArray;
 let addedTask = [];
-let forSearchResult;
 function makeOneTask() {
 
     addedTask = document.createElement("div");
@@ -163,8 +162,7 @@ function makeOneTask() {
              })
     }
 
-    forSearchResult();
-    console.log(filteredArray)
+
     gsap.fromTo(addedTask, {
         y: -30,
         opacity: 0.5,
