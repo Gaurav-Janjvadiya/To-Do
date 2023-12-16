@@ -25,8 +25,12 @@ function changeMode() {
         modebtn.innerHTML = `<span class="material-symbols-outlined">dark_mode</span>`
     }
 }
+
 let filteredArray;
 let addedTask = [];
+let hii;
+
+
 function makeOneTask() {
 
     addedTask = document.createElement("div");
@@ -162,7 +166,6 @@ function makeOneTask() {
              })
     }
 
-
     gsap.fromTo(addedTask, {
         y: -30,
         opacity: 0.5,
@@ -172,10 +175,17 @@ function makeOneTask() {
         opacity: 1,
         ease: "bounce.out",
     })
-
-
-
+    hii = Array.from(inputs);
+    hii = hii.filter(
+        function(arr){
+            if(arr.value === "Ga"){
+                return arr;
+            }
+        }
+    );
 }
+
+
 
 
 function forTimeDate() {
