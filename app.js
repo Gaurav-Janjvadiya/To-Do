@@ -188,6 +188,7 @@ function makeOneTask() {
 
 
 
+
 function forTimeDate() {
 
     const now = new Date();
@@ -208,8 +209,33 @@ function forTimeDate() {
 document.querySelector("#addDate").addEventListener("click", forTimeDate);
 
 document.querySelector("#addTask").addEventListener("click", makeOneTask);
+document.querySelector("#writeTask").addEventListener("keydown", (e) => {
+    if(e.key === "Enter")
+    {
+        makeOneTask();
+    }
+});
 
-
+document.querySelector("#sortbtn").addEventListener("click",() => {
+    gsap.fromTo("#sortOptions",{
+        opacity:0,
+        display:'none',
+        duration:0,
+        x:60
+    },{
+        opacity:1,
+        display:'flex',
+        duration:2,
+        x:0
+    })
+    gsap.fromTo("#sortbtn",{
+        x:-400,
+        duration:1
+    },{
+        x:0,
+        duration:2
+    })
+})
 
 document.querySelector("#searchbtn").addEventListener("click", () => {
     gsap.fromTo("#searchTask", {
@@ -224,3 +250,4 @@ document.querySelector("#searchbtn").addEventListener("click", () => {
     })
     document.querySelector("#searchTask").focus();
 })
+

@@ -127,11 +127,30 @@ main{
 
 #sort{
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     margin-top: 3rem;
     height: 3rem;
     margin-bottom: 3rem;
+    border-radius: 3rem;
+}
+
+#sortOptions{
+    display: none;
+    width: 70%;
+    margin-left: 2rem;
+}
+
+input[type=radio]{
+    cursor: pointer;
+}
+
+label{
+    margin:0 1rem 0 0.4rem;
+    transition: 0.5s all;
+    cursor: pointer;
+    color: var(--text);
+    font-weight: 300;
 }
 
 
