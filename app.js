@@ -230,11 +230,13 @@ document.querySelector("#sortbtn").addEventListener("click",() => {
         x:0
     })
     gsap.fromTo("#sortbtn",{
-        x:-400,
+        x:'-800',
+        opacity:1,
         duration:1,
-        rotate:360,
+        rotate:'800red',
     },{
         x:0,
+        opacity:0,
         duration:2,
         rotate:0,
     })
@@ -271,7 +273,24 @@ sortOptions.addEventListener("click",(e) => {
             tasks.prepend(e);
         })
     }
-    // if(e.target === nonChecked){
-
-    // }
+    if(e.target === nonChecked){
+        arr = Array.from(addedTasks).filter((e) => {
+            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
+                return e;
+            }
+        })
+        arr.forEach((e) => {
+            tasks.prepend(e);
+        })
+    }
+    if(e.target === all){
+        arr = Array.from(addedTasks).filter((e) => {
+            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>` || e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
+                return e;
+            }
+        })
+        arr.forEach((e) => {
+            tasks.prepend(e);
+        })
+    }
 })
