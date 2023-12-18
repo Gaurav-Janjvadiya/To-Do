@@ -206,8 +206,10 @@ function forTimeDate() {
     }
     document.querySelector("#writeTask").value += `\t\t${date}-${month}-${year} | ${hour}:${minute}`;
 }
+const addDate = document.querySelector("#addDate");
 
-document.querySelector("#addDate").addEventListener("click", forTimeDate);
+
+addDate.addEventListener("click", forTimeDate);
 
 document.querySelector("#addTask").addEventListener("click", makeOneTask);
 document.querySelector("#writeTask").addEventListener("keydown", (e) => {
@@ -229,19 +231,14 @@ document.querySelector("#sortbtn").addEventListener("click",() => {
         duration:2,
         x:0
     })
-    gsap.fromTo("#sortbtn",{
-        x:'-800',
-        opacity:1,
-        duration:1,
-        rotate:'800red',
-    },{
-        x:0,
+    gsap.to("#sortbtn",{
         opacity:0,
-        duration:2,
-        rotate:0,
+        duration:0,
     })
 })
 
+
+let swich = 1;
 document.querySelector("#searchbtn").addEventListener("click", () => {
     gsap.fromTo("#searchTask", {
         display: 'none',
@@ -253,9 +250,42 @@ document.querySelector("#searchbtn").addEventListener("click", () => {
         duration: 1,
         opacity: 1
     })
-    document.querySelector("#searchTask").focus();
 })
 
+document.querySelector("#searchbtn").addEventListener("click", () => {
+    for(let i=0;i<tasks.children.length;i++){
+        if(document.querySelector("#searchTask").value === tasks.children[i].children[0].value){
+            document.querySelector("#serchResultPart").innerHTML += tasks.children[i].children[0].value + "</br>";
+        }
+    }
+   if(document.querySelector("#searchTask").value){
+    if(swich == 1){
+        swich = 0;
+        document.querySelector("#serchResultPart").style.display = "flex";
+    }else{
+        swich = 1;
+        document.querySelector("#serchResultPart").style.display = "none";
+    }
+ }
+})
+document.querySelector("#searchTask").addEventListener("keydown", (e) => {
+    if(e.key === "Enter"){
+        for(let i=0;i<tasks.children.length;i++){
+            if(document.querySelector("#searchTask").value === tasks.children[i].children[0].value){
+                document.querySelector("#serchResultPart").innerHTML += tasks.children[i].children[0].value + "</br>";
+            }
+        }
+       if(document.querySelector("#searchTask").value){
+        if(swich == 1){
+            swich = 0;
+            document.querySelector("#serchResultPart").style.display = "flex";
+        }else{
+            swich = 1;
+            document.querySelector("#serchResultPart").style.display = "none";
+        }
+     }
+    }
+})
 const sortOptions = document.querySelector("#sortOptions");
 const checked = document.querySelector("#checked");
 const nonChecked = document.querySelector("#nonChecked");
