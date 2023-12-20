@@ -26,7 +26,6 @@ function changeMode() {
     }
 }
 
-let filteredArray;
 let addedTask = [];
 let hii;
 let checkboxes;
@@ -267,6 +266,7 @@ document.querySelector("#searchbtn").addEventListener("click", () => {
         document.querySelector("#serchResultPart").style.display = "none";
     }
  }
+ document.querySelector("#searchTask").value = "";
 })
 document.querySelector("#searchTask").addEventListener("keydown", (e) => {
     if(e.key === "Enter"){
@@ -299,6 +299,7 @@ sortOptions.addEventListener("click",(e) => {
                 return e;
             }
         })
+        tasks.innerHTML = "";
         arr.forEach((e) => {
             tasks.prepend(e);
         })
@@ -309,6 +310,7 @@ sortOptions.addEventListener("click",(e) => {
                 return e;
             }
         })
+        tasks.innerHTML = "";
         arr.forEach((e) => {
             tasks.prepend(e);
         })
@@ -319,6 +321,7 @@ sortOptions.addEventListener("click",(e) => {
                 return e;
             }
         })
+        tasks.innerHTML = "";
         arr.forEach((e) => {
             tasks.prepend(e);
         })
