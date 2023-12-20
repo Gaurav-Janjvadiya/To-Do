@@ -29,6 +29,7 @@ function changeMode() {
 let addedTask = [];
 let hii;
 let checkboxes;
+let idcheckboxes;
 let addedTasks;
 
 function makeOneTask() {
@@ -96,7 +97,7 @@ function makeOneTask() {
     let delets = document.querySelectorAll(".deletebtn");
     let iddelets = document.querySelectorAll("#deletebtn");
     addedTasks = document.querySelectorAll(".addedTask");
-    let idcheckboxes = document.querySelectorAll("#checkbox");
+    idcheckboxes = document.querySelectorAll("#checkbox");
     checkboxes = document.querySelectorAll(".checkbox");
     let dotsTasks = document.querySelectorAll("#dotsTask");
     let allbtns = document.querySelectorAll("#btns");
@@ -175,14 +176,6 @@ function makeOneTask() {
         opacity: 1,
         ease: "bounce.out",
     })
-    // hii = Array.from(inputs);
-    // hii = hii.filter(
-    //     function(arr){
-    //         if(arr.value === "Ga"){
-    //             return arr;
-    //         }
-    //     }
-    // );
 }
 
 
@@ -292,38 +285,80 @@ const nonChecked = document.querySelector("#nonChecked");
 const all = document.querySelector("#All");
 let arr;
 
-sortOptions.addEventListener("click",(e) => {
-    if(e.target === checked){
-        arr = Array.from(addedTasks).filter((e) => {
-            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
-                return e;
-            }
-        })
-        tasks.innerHTML = "";
-        arr.forEach((e) => {
-            tasks.prepend(e);
-        })
-    }
-    if(e.target === nonChecked){
-        arr = Array.from(addedTasks).filter((e) => {
-            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
-                return e;
-            }
-        })
-        tasks.innerHTML = "";
-        arr.forEach((e) => {
-            tasks.prepend(e);
-        })
-    }
-    if(e.target === all){
-        arr = Array.from(addedTasks).filter((e) => {
-            if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>` || e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
-                return e;
-            }
-        })
-        tasks.innerHTML = "";
-        arr.forEach((e) => {
-            tasks.prepend(e);
-        })
-    }
-})
+
+if(window.innerWidth >= 600){
+    sortOptions.addEventListener("click",(e) => {
+        if(e.target === checked){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
+                    return e;
+                }
+            })
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+        if(e.target === nonChecked){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
+                    return e;
+                }
+            })
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+        if(e.target === all){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>` || e.children[3].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
+                    return e;
+                }
+            })
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+    })
+}else if(window.innerWidth < 600){
+    sortOptions.addEventListener("click",(e) => {
+        if(e.target === checked){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[5].children[2].innerHTML == `<span class="material-symbols-outlined">check_box</span>`){
+                    return e;
+                }
+            })
+            console.log(arr)
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+        if(e.target === nonChecked){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[5].children[2].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
+                    return e;
+                }
+            })
+            console.log(arr)
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+        if(e.target === all){
+            arr = Array.from(addedTasks).filter((e) => {
+                if(e.children[5].children[2].innerHTML == `<span class="material-symbols-outlined">check_box</span>` || e.children[5].children[2].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
+                    return e;
+                }
+            })
+            console.log(arr)
+            tasks.innerHTML = "";
+            arr.forEach((e) => {
+                tasks.prepend(e);
+            })
+        }
+    })
+}
