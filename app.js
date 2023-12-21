@@ -67,21 +67,35 @@ function makeOneTask() {
 
     const btns = document.createElement("div");
     btns.setAttribute("id",'btns');
-    btns.innerHTML = `<button id="editbtn">
-        <span class="material-symbols-outlined">
-            edit
-        </span>
-    </button>
-    <button id="deletebtn">
-        <span class="material-symbols-outlined">
-            delete
-        </span>
-    </button>
-    <button id="checkbox">
-        <span class="material-symbols-outlined">
-            check_box_outline_blank
-        </span>
-    </button>`;
+
+    const idbtn1 = document.createElement("button");
+    idbtn1.setAttribute("id","editbtn");
+    idbtn1.innerHTML = `<span class="material-symbols-outlined">edit</span>`;
+    btns.append(idbtn1);
+
+    const idbtn2 = document.createElement("button");
+    idbtn2.setAttribute("id","deletebtn");
+    idbtn2.innerHTML = `<span class="material-symbols-outlined">delete</span>`;
+    btns.append(idbtn2);
+
+    const idbtn3 = document.createElement("button");
+    idbtn3.setAttribute("id","checkbox");
+    idbtn3.innerHTML = `<span class="material-symbols-outlined">check_box_outline_blank</span>`;
+    btns.append(idbtn3);
+
+    // btns.innerHTML = `<button id="editbtn">
+    //     
+    // </button>
+    // <button id="deletebtn">
+    //     <span class="material-symbols-outlined">
+    //         delete
+    //     </span>
+    // </button>
+    // <button id="checkbox">
+    //     <span class="material-symbols-outlined">
+    //         check_box_outline_blank
+    //     </span>
+    // </button>`;
     addedTask.append(btns);
 
 
@@ -286,7 +300,7 @@ const all = document.querySelector("#All");
 let arr;
 
 
-if(window.innerWidth >= 600){
+if(window.innerWidth > 600){
     sortOptions.addEventListener("click",(e) => {
         if(e.target === checked){
             arr = Array.from(addedTasks).filter((e) => {
@@ -322,7 +336,7 @@ if(window.innerWidth >= 600){
             })
         }
     })
-}else if(window.innerWidth < 600){
+}else if(window.innerWidth <= 600){
     sortOptions.addEventListener("click",(e) => {
         if(e.target === checked){
             arr = Array.from(addedTasks).filter((e) => {
@@ -338,11 +352,10 @@ if(window.innerWidth >= 600){
         }
         if(e.target === nonChecked){
             arr = Array.from(addedTasks).filter((e) => {
-                if(e.children[5].children[2].innerHTML == `<span class="material-symbols-outlined">check_box_outline_blank</span>`){
-                    return e;
-                }
+                if(e.children[5].children[2].innerHTML ==`<span class="material-symbols-outlined">check_box_outline_blank</span>`){
+                            return e;
+                        }
             })
-            console.log(arr)
             tasks.innerHTML = "";
             arr.forEach((e) => {
                 tasks.prepend(e);
@@ -354,7 +367,6 @@ if(window.innerWidth >= 600){
                     return e;
                 }
             })
-            console.log(arr)
             tasks.innerHTML = "";
             arr.forEach((e) => {
                 tasks.prepend(e);
