@@ -265,6 +265,7 @@ label{
         display: none;
         justify-content: end;
         align-items: center;
+        border-radius: 3rem;
     }
 
     #editbtn,#deletebtn,#checkbox{
